@@ -43,6 +43,11 @@ public class NumericSystemConversor {
         Collections.reverse(finalNumberDigits);
 
         if (isNegative){
+            int fnd = finalNumberDigits.size();
+            for (int i = 0; i < Binary.requiredBits(Integer.parseInt(decimal), true) - fnd; i++){
+                finalNumberDigits.addFirst(0);
+            }
+
             for (int i = 0; i < finalNumberDigits.size(); i++){
                 if (finalNumberDigits.get(i) == 0){
                     finalNumberDigits.set(i, 1);

@@ -1,6 +1,10 @@
 package NumericSystems;
 
 public class Binary implements NumericSystem{
+    public static final int UNSIGNED_BYTE_MIN_RANGE = 0;
+    public static final int UNSIGNED_BYTE_MAX_RANGE = 255;
+    public static final int SIGNED_BYTE_MIN_RANGE = -128;
+    public static final int SIGNED_BYTE_MAX_RANGE = 127;
     public static final int BASE = 2;
     public final String BASE_SUB = "₂";
     public static final char[] ALLOWED_DIGITS = {'0', '1'};
@@ -51,6 +55,31 @@ public class Binary implements NumericSystem{
     }
 
     //methods
+    public static int requiredBits(int value, boolean isNegative){
+        int requiredBits = 8;
+        int range = 0;
+        boolean fits = true;
+
+        if (isNegative){
+            range =(int) ((Math.pow(BASE, requiredBits)/2)*-1);
+        }else {
+            range =(int) Math.pow(BASE, requiredBits);
+        }
+
+        if (range > value){
+            fits = false;
+        }
+
+        if (!fits){
+            while (range >= value){
+                requiredBits += requiredBits;
+                range *= 2;
+            }
+        }
+
+        return requiredBits;
+    }
+
     private boolean isBinary(String v){
         boolean check = true;
         char[] digits = v.toCharArray();
