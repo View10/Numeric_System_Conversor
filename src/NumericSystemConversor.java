@@ -231,11 +231,25 @@ public class NumericSystemConversor {
 
     public static int octalToDecimal(Octal oct){
         int finalNumber = 0;
-        char[] digits = oct.getValue().toCharArray();
         int count = 0;
+        boolean isNegative;
+        char[] digits;
+
+        if (oct.getValue().toCharArray()[0] == '-'){
+            isNegative = true;
+            String[] parts = oct.getValue().split("-");
+            digits = parts[1].toCharArray();
+        }else {
+            isNegative = false;
+            digits = oct.getValue().toCharArray();
+        }
 
         for (int i = digits.length-1; i >= 0; i--, count++){
             finalNumber += (int) (Math.pow(Octal.BASE, i) * (digits[count] -'0'));
+        }
+
+        if (isNegative){
+            finalNumber *= -1;
         }
 
         return finalNumber;

@@ -3,7 +3,7 @@ package NumericSystems;
 public class Octal implements NumericSystem{
     public static final int BASE = 8;
     public final String BASE_SUB = "₈";
-    public static final char[] ALLOWED_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7'};
+    public static final char[] ALLOWED_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '-'};
     private String value;
 
     //constructors
