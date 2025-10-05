@@ -4,7 +4,7 @@ public class Hexadecimal implements NumericSystem{
     public static final int BASE = 16;
     public final String BASE_SUB = "₁₆";
     public static final char[] ALLOWED_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'a', 'B', 'b',
-    'C','c', 'D', 'd', 'E', 'e', 'F', 'f'};
+    'C','c', 'D', 'd', 'E', 'e', 'F', 'f', '-'};
     private String value;
 
     //constructors
@@ -52,8 +52,10 @@ public class Hexadecimal implements NumericSystem{
         for (char digit : digits){
             if (digit < '0' || digit > '9'){
                 if (digit < 'A' || digit > 'F'){
-                    check = false;
-                    break;
+                    if (digit != '-'){
+                        check = false;
+                        break;
+                    }
                 }
             }
         }

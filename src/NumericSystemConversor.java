@@ -77,10 +77,19 @@ public class NumericSystemConversor {
         ArrayList<Integer> finalNumberDigits = new ArrayList<>();
         String finalNumber = "";
         int remainder = 0;
-        int divisor = Integer.parseInt(decimal);
+        int divisor = 0;
         int dividend = Octal.BASE;
         int aux = 0;
         int count = 0;
+        boolean isNegative = false;
+
+        if (decimal.toCharArray()[0] == '-') {
+            String[] splitNum = decimal.split("-");
+            isNegative = true;
+            divisor = Integer.parseInt(splitNum[1]);
+        }else {
+            divisor = Integer.parseInt(decimal);
+        }
 
         while (divisor != 0){
             while (aux <= divisor){
@@ -105,6 +114,10 @@ public class NumericSystemConversor {
             finalNumber += digit;
         }
 
+        if (isNegative){
+            finalNumber = "-" + finalNumber;
+        }
+
         return new Octal(finalNumber);
     }
 
@@ -112,10 +125,19 @@ public class NumericSystemConversor {
         ArrayList<String> finalNumberDigits = new ArrayList<>();
         String finalNumber = "";
         int remainder = 0;
-        int divisor = Integer.parseInt(decimal);
+        int divisor = 0;
         int dividend = Hexadecimal.BASE;
         int aux = 0;
         int count = 0;
+        boolean isNegative = false;
+
+        if (decimal.toCharArray()[0] == '-') {
+            String[] splitNum = decimal.split("-");
+            isNegative = true;
+            divisor = Integer.parseInt(splitNum[1]);
+        }else {
+            divisor = Integer.parseInt(decimal);
+        }
 
         while (divisor != 0){
             while (aux <= divisor){
@@ -161,6 +183,10 @@ public class NumericSystemConversor {
 
         for(String digit : finalNumberDigits){
             finalNumber += digit;
+        }
+
+        if (isNegative){
+            finalNumber = "-" + finalNumber;
         }
 
         return new Hexadecimal(finalNumber);
