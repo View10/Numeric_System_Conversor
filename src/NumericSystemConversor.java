@@ -197,11 +197,31 @@ public class NumericSystemConversor {
         char[] digits = bin.getValue().toCharArray();
         int count = 0;
 
+        if (bin.isNegative()){
+            for (int i = 0; i < digits.length; i++){
+                if (Integer.parseInt(digits[i]+"") == 0){
+                    digits[i] = '1';
+                }else {
+                    digits[i] = '0';
+                }
+            }
+
+            for (int i = digits.length-1; i >= 0; i--){
+                if (Integer.parseInt(digits[i]+"") + 1 > 1){
+                    digits[i] = '0';
+                }else {
+                    digits[i] = '1';
+                    break;
+                }
+            }
+        }
+
         for (int i = digits.length-1; i >= 0; i--, count++){
             if (digits[i] == '1'){
                 finalNumber += (int) Math.pow(Binary.BASE, count);
             }
         }
+
         if (bin.isNegative()){
             finalNumber *= -1;
         }
