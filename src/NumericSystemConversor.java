@@ -257,10 +257,20 @@ public class NumericSystemConversor {
 
     public static int hexadecimalToDecimal(Hexadecimal hex){
         int finalNumber = 0;
-        char[] digits = hex.getValue().toCharArray();
+        char[] digits;
         int count = 0;
         char charDigit = 'a';
         int intDigit = 0;
+        boolean isNegative;
+
+        if (hex.getValue().toCharArray()[0] == '-'){
+            isNegative = true;
+            String[] parts = hex.getValue().split("-");
+            digits = parts[1].toCharArray();
+        }else {
+            isNegative = false;
+            digits = hex.getValue().toCharArray();
+        }
 
         for (int i = digits.length-1; i >= 0; i--, count++){
             charDigit = digits[count];
@@ -289,6 +299,10 @@ public class NumericSystemConversor {
             }
 
             finalNumber += (int) (Math.pow(Hexadecimal.BASE, i) * intDigit);
+        }
+
+        if (isNegative){
+            finalNumber *= -1;
         }
 
         return finalNumber;
