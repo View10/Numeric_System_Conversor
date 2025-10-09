@@ -45,7 +45,7 @@ public class Hexadecimal implements NumericSystem{
     }
 
     //methods
-    private boolean isHexadecimal(String v){
+    public boolean isHexadecimal(String v){
         boolean check = true;
         char[] digits = v.toCharArray();
 

@@ -76,7 +76,7 @@ public class Binary implements NumericSystem{
         return requiredBits;
     }
 
-    private boolean isBinary(String v){
+    public boolean isBinary(String v){
         boolean check = true;
         char[] digits = v.toCharArray();
 

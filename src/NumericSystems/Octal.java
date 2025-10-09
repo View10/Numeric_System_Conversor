@@ -44,7 +44,7 @@ public class Octal implements NumericSystem{
     }
 
     //methods
-    private boolean isOctal(String v){
+    public boolean isOctal(String v){
         boolean check = true;
         char[] digits = v.toCharArray();
 
