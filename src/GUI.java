@@ -214,6 +214,22 @@ public class GUI implements ActionListener, KeyListener {
                     case "Hexadecimal" -> output.setText(NumericSystemConversor.decimalToHexadecimal(NumericSystemConversor.binaryToDecimal(bin)+"").getValue());
                 }
                 break;
+            case "Octal":
+                Octal oct = new Octal(input.getText());
+                switch (to){
+                    case "Decimal" -> output.setText(NumericSystemConversor.octalToDecimal(oct)+"");
+                    case "Binary" -> output.setText(NumericSystemConversor.decimalToBinary(NumericSystemConversor.octalToDecimal(oct)+"").getValue());
+                    case "Hexadecimal" -> output.setText(NumericSystemConversor.decimalToHexadecimal(NumericSystemConversor.octalToDecimal(oct)+"").getValue());
+                }
+                break;
+            case "Hexadecimal":
+                Hexadecimal hex = new Hexadecimal(input.getText());
+                switch (to){
+                    case "Decimal" -> output.setText(NumericSystemConversor.hexadecimalToDecimal(hex)+"");
+                    case "Binary" -> output.setText(NumericSystemConversor.decimalToBinary(NumericSystemConversor.hexadecimalToDecimal(hex)+"").getValue());
+                    case "Octal" -> output.setText(NumericSystemConversor.decimalToOctal(NumericSystemConversor.hexadecimalToDecimal(hex)+"").getValue());
+                }
+                break;
         }
     }
 
@@ -262,6 +278,30 @@ public class GUI implements ActionListener, KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_9){
             input.setText(input.getText()+"9");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_A){
+            input.setText(input.getText()+"A");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_B){
+            input.setText(input.getText()+"B");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_C){
+            input.setText(input.getText()+"C");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_D){
+            input.setText(input.getText()+"D");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_E){
+            input.setText(input.getText()+"E");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_F){
+            input.setText(input.getText()+"F");
         }
 
         if (e.getKeyCode() == KeyEvent.VK_MINUS || e.getKeyCode() == KeyEvent.VK_SUBTRACT){
