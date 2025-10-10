@@ -162,6 +162,7 @@ public class GUI implements ActionListener, KeyListener {
 
                     break;
             }
+            convert((String) inputOptions.getSelectedItem(), (String) outputOptions.getSelectedItem());
         }else if (source == outputOptions){
             switch (source.getSelectedIndex()){
                 case 0:
@@ -177,6 +178,7 @@ public class GUI implements ActionListener, KeyListener {
                     outputBase.setText("₁₆");
                     break;
             }
+            convert((String) inputOptions.getSelectedItem(), (String) outputOptions.getSelectedItem());
         }
 
         if (inputOptions.getSelectedIndex() != 1){
